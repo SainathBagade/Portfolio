@@ -29,16 +29,35 @@ const contactSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now }
 });
 
-const Contact = mongoose.model('Contact', contactSchema);
+const Contact = mongoose.models.Contact || mongoose.model('Contact', contactSchema);
+
+app.get('/api/health', (req, res) => {
+    res.json({
+        status: 'ok',
+        mongoState: mongoose.connection.readyState, // 0: disconnected, 1: connected, 2: connecting, 3: disconnecting
+        envMongoURI: !!process.env.MONGO_URI
+    });
+});
 
 app.post('/api/contact', async (req, res) => {
     try {
+        console.log('Headers:', req.headers);
+        console.log('Body:', req.body);
+
+        if (!req.body) {
+            throw new Error('Request body is missing');
+        }
+
         const { name, email, message } = req.body;
         const newContact = new Contact({ name, email, message });
         await newContact.save();
+
+        console.log('Contact saved successfully');
         res.status(201).json({ success: true, message: 'Message sent successfully!' });
     } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
+        console.error('Error saving contact:', err);
+        // Return explicit error to client
+        res.status(500).json({ success: false, error: err.message, stack: err.stack });
     }
 });
 

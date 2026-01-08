@@ -3,6 +3,8 @@ import { Link } from 'react-scroll';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import logo from '../assets/logo.png';
+
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -47,19 +49,12 @@ const Header = () => {
                         animate={{ opacity: 1 }}
                         whileHover={{ scale: 1.05 }}
                         style={{
-                            fontSize: '1.6rem',
-                            fontWeight: 800,
                             cursor: 'pointer',
-                            background: 'linear-gradient(135deg, #0A66C2 0%, #004182 100%)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
-                            fontFamily: "'Poppins', sans-serif",
-                            letterSpacing: '-0.5px',
-                            transition: 'all 0.3s ease'
+                            display: 'flex',
+                            alignItems: 'center'
                         }}
                     >
-                        Sainath Bagade
+                        <img src={logo} alt="Sainath.dev Logo" style={{ height: '40px', objectFit: 'contain' }} />
                     </motion.div>
                 </Link>
 
@@ -143,7 +138,7 @@ const Header = () => {
                     .mobile-menu-icon { display: block !important; }
                 }
             `}</style>
-        </header>
+        </header >
     );
 };
 
