@@ -1,36 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
+import ecomindImg from '../assets/ecomind.png';
+import truestayImg from '../assets/TrueStay.png';
 
 const Projects = () => {
     const projects = [
         {
-            title: "E-Commerce Enterprise",
-            desc: "Full-scale e-commerce solution with integrated payment gateways and admin dashboard.",
-            tech: ["React", "Node.js", "MongoDB", "Redux"],
-            image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800",
-            links: { github: "https://github.com/bagadesai4", demo: "#" }
+            title: "EcoMinds",
+            desc: "Learn, Play, Save the Planet! Interactive lessons, quizzes, and real-world challenges for environmental science education.",
+            tech: ["React", "Node.js", "MongoDB", "Educational Tech"],
+            image: ecomindImg,
+            links: { github: "https://github.com/SainathBagade/Ecominds", demo: "https://finalecominds.vercel.app/" }
         },
         {
-            title: "Project Management Tool",
-            desc: "Collaborative workspace for teams with real-time updates and task tracking features.",
-            tech: ["Next.js", "Express", "PostgreSQL", "Socket.io"],
-            image: "https://images.unsplash.com/photo-1454165833742-272138e4a21e?auto=format&fit=crop&q=80&w=800",
-            links: { github: "https://github.com/bagadesai4", demo: "#" }
-        },
-        {
-            title: "Health Monitoring App",
-            desc: "Mobile-responsive web app to track fitness metrics and schedule medical appointments.",
-            tech: ["React Native", "Firebase", "Auth0"],
-            image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800",
-            links: { github: "https://github.com/bagadesai4", demo: "#" }
-        },
-        {
-            title: "Analytics Dashboard",
-            desc: "Data visualization platform for monitoring business metrics and financial data.",
-            tech: ["React", "D3.js", "Express", "AWS"],
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-            links: { github: "https://github.com/bagadesai4", demo: "#" }
+            title: "TrueStay",
+            desc: "A modern home rental platform with advanced search, booking management, and property listings.",
+            tech: ["React", "Express", "MongoDB", "Stripe"],
+            image: truestayImg,
+            links: { github: "https://github.com/SainathBagade/TrueStay", demo: "https://truestay-wp80.onrender.com" }
         }
     ];
 
