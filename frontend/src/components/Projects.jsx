@@ -24,7 +24,7 @@ const Projects = () => {
         {
             title: "Banking System",
             desc: "A robust core banking simulation handling account management, secure transactions, and real-time fraud detection analytics.",
-            tech: ["Java", "OOP", "Data Structures", "Console UI"],
+            tech: ["C++", "OOP", "Data Structures"],
             image: bankingImg,
             links: { github: "https://github.com/SainathBagade/Banking-System", demo: "https://github.com/SainathBagade/Banking-System" }
         }
