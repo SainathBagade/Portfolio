@@ -61,7 +61,8 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-if (process.env.NODE_ENV !== 'production') {
+// Start server if run directly (Render/Local), export if imported (Vercel)
+if (require.main === module) {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
