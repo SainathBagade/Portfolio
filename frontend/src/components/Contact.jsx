@@ -11,7 +11,8 @@ const Contact = () => {
         e.preventDefault();
         setStatus('Sending...');
         try {
-            const res = await axios.post('/api/contact', formData);
+            const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+            const res = await axios.post(`${baseUrl}/api/contact`, formData);
             if (res.data.success) {
                 setStatus('Message sent successfully!');
                 setFormData({ name: '', email: '', message: '' });
