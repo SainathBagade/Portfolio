@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
 import ecomindImg from '../assets/ecomind.png';
 import truestayImg from '../assets/TrueStay.png';
+import bankingImg from '../assets/banking_system.png';
 
 const Projects = () => {
     const projects = [
@@ -19,6 +20,13 @@ const Projects = () => {
             tech: ["React", "Express", "MongoDB", "Stripe"],
             image: truestayImg,
             links: { github: "https://github.com/SainathBagade/TrueStay", demo: "https://truestay-wp80.onrender.com" }
+        },
+        {
+            title: "Banking System",
+            desc: "A robust core banking simulation handling account management, secure transactions, and real-time fraud detection analytics.",
+            tech: ["Java", "OOP", "Data Structures", "Console UI"],
+            image: bankingImg,
+            links: { github: "https://github.com/SainathBagade/Banking-System", demo: "https://github.com/SainathBagade/Banking-System" }
         }
     ];
 
