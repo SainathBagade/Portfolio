@@ -1,26 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, ShieldCheck, Trophy, Database, Code } from 'lucide-react';
+import { Award, Trophy, Database, Code, Cloud } from 'lucide-react';
 
 const Achievements = () => {
     const achievements = [
         {
-            title: "Oracle Certified Professional",
-            issuer: "Oracle University",
-            date: "2024",
-            icon: <Database size={32} />
-        },
-        {
-            title: "500+ LeetCode Questions Solved",
+            title: "Solved 500+ Data Structures & Algorithms problems",
             issuer: "LeetCode",
             date: "Ongoing",
             icon: <Code size={32} />
         },
         {
-            title: "Full Stack Development Certification",
-            issuer: "Udemy",
-            date: "2023",
-            icon: <Award size={32} />
+            title: "AWS SimuLearn: Cloud Practitioner",
+            issuer: "AWS",
+            date: "2025",
+            icon: <Cloud size={32} />
+        },
+        {
+            title: "MongoDB & Oracle Certifications",
+            issuer: "University/Industry",
+            date: "2025",
+            icon: <Database size={32} />
         }
     ];
 

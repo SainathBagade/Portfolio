@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, FileText, ArrowRight, Phone, Mail } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import saiImg from '../assets/sai.jpeg';
-import resumePdf from '../assets/Resume.pdf';
+import resumePdf from '../assets/Sai 29 Jan.pdf';
 
 const Hero = () => {
-    const [showNameCursor, setShowNameCursor] = useState(true);
-
     return (
         <section id="home" style={{ backgroundColor: '#fff', paddingTop: '150px', paddingBottom: '100px' }}>
             <div className="container">
@@ -29,21 +27,7 @@ const Hero = () => {
                             fontWeight: '700',
                             color: '#1F2937'
                         }}>
-                            <TypeAnimation
-                                sequence={[
-                                    1000,
-                                    "Hi, I'm ",
-                                    () => setShowNameCursor(false)
-                                ]}
-                                wrapper="span"
-                                speed={50}
-                                cursor={showNameCursor}
-                                repeat={0}
-                                style={{
-                                    color: '#1F2937',
-                                    display: 'inline'
-                                }}
-                            />
+                            Hi, I'm{' '}
                             <a
                                 href="#home"
                                 style={{
@@ -72,17 +56,15 @@ const Hero = () => {
                                 Sainath Bagade
                             </a>
                         </h1>
-                        <h2 style={{ fontSize: '1.5rem', color: 'var(--text-muted)', fontWeight: 500, marginBottom: '24px', minHeight: '1.5em' }}>
+                        <h2 style={{ fontSize: '1.5rem', color: 'var(--text-muted)', fontWeight: 500, marginBottom: '24px', minHeight: '1.6em' }}>
                             <TypeAnimation
                                 sequence={[
                                     'Full Stack Web Developer',
                                     2000,
-                                    'Analytical Problem Solver',
-                                    2000,
-                                    'Cloud Computing Enthusiast',
-                                    2000,
                                     'Software Developer',
-                                    2000
+                                    2000,
+                                    'Problem Solver',
+                                    2000,
                                 ]}
                                 wrapper="span"
                                 speed={50}
@@ -95,12 +77,12 @@ const Hero = () => {
                                 <Phone size={18} /> <span>+91 7887887117</span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)' }}>
-                                <Mail size={18} /> <span>bagadesai4@gmail.com</span>
+                                <Mail size={18} /> <span>bagadesainath46@gmail.com</span>
                             </div>
                         </div>
 
                         <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '40px', maxWidth: '600px' }}>
-                            I build robust, scalable, and user-centric web applications. Passionate about turning complex problems into simple, beautiful digital solutions.
+                            Turning real-world problems into simple, effective web solutions. Focused on clean code and practical development.
                         </p>
 
                         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '40px' }}>

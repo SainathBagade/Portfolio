@@ -7,27 +7,27 @@ const Skills = () => {
         {
             title: "Coding Languages",
             icon: <Terminal className="text-primary" />,
-            skills: ["C++", "Java", "JavaScript (ES6+)", "Python", "SQL"]
+            skills: ["C++", "JavaScript (ES6+)"]
         },
         {
             title: "Frontend Development",
             icon: <Layout className="text-primary" />,
-            skills: ["React.js", "Next.js", "TypeScript", "Redux Toolkit", "Tailwind CSS", "Material UI"]
+            skills: ["HTML", "CSS", "React.js", "Tailwind CSS", "Material UI"]
         },
         {
             title: "Backend Development",
             icon: <Database className="text-primary" />,
-            skills: ["Node.js", "Express.js", "Mongoose", "REST APIs", "GraphQL", "JWT Auth"]
+            skills: ["Node.js", "Express.js", "Mongoose", "REST APIs", "JWT Auth"]
         },
         {
-            title: "Cloud & DevOps",
-            icon: <Cloud className="text-primary" />,
-            skills: ["Docker", "Kubernetes", "AWS (EC2/S3/Lambda)", "Vercel", "CI/CD", "Terraform"]
-        },
-        {
-            title: "Tools & Testing",
+            title: "Database",
             icon: <Settings className="text-primary" />,
-            skills: ["Git / GitHub", "Postman", "Jest", "Cypress", "Redis", "Firebase"]
+            skills: ["MySQL", "MongoDB", "Postgre"]
+        },
+        {
+            title: "Other",
+            icon: <Settings className="text-primary" />,
+            skills: ["GitHub", "Hoppscotch", "Vercel", "Render"]
         }
     ];
 

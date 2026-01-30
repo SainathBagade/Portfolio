@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink, scroller } from 'react-scroll';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -8,6 +9,8 @@ import logo from '../assets/logo.png';
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,28 +24,50 @@ const Header = () => {
         { name: 'Home', to: 'home' },
         { name: 'About', to: 'about' },
         { name: 'Skills', to: 'skills' },
-        { name: 'Experience', to: 'experience' },
         { name: 'Projects', to: 'projects' },
         { name: 'Achievements', to: 'achievements' },
         { name: 'Contact', to: 'contact' },
     ];
 
+    const handleNavClick = (to) => {
+        setIsOpen(false);
+        if (location.pathname !== '/') {
+            navigate('/', { state: { scrollTo: to } });
+        }
+    };
+
+    // Effect to handle scrolling when navigating back to home from another page
+    useEffect(() => {
+        if (location.pathname === '/' && location.state && location.state.scrollTo) {
+            const section = location.state.scrollTo;
+            setTimeout(() => {
+                scroller.scrollTo(section, {
+                    smooth: true,
+                    duration: 500,
+                    offset: -80,
+                });
+            }, 100);
+            // Clear state after scrolling
+            navigate(location.pathname, { replace: true, state: {} });
+        }
+    }, [location, navigate]);
+
     return (
         <header className="nav" style={{
             boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
             padding: scrolled ? '10px 0' : '20px 0',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            zIndex: 1000
         }}>
             <nav className="container" style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center'
             }}>
-                <Link
-                    to="home"
-                    smooth={true}
-                    duration={500}
-                    offset={-80}
+                <RouterLink
+                    to="/"
+                    onClick={() => window.scrollTo(0, 0)}
+                    style={{ textDecoration: 'none' }}
                 >
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -56,7 +81,7 @@ const Header = () => {
                     >
                         <img src={logo} alt="Sainath.dev Logo" style={{ height: '40px', objectFit: 'contain' }} />
                     </motion.div>
-                </Link>
+                </RouterLink>
 
                 {/* Desktop Nav */}
                 <ul style={{
@@ -67,24 +92,42 @@ const Header = () => {
                 }} className="desktop-nav">
                     {navLinks.map((link) => (
                         <li key={link.to}>
-                            <Link
-                                to={link.to}
-                                smooth={true}
-                                duration={500}
-                                offset={-80}
-                                style={{
-                                    color: 'var(--text-main)',
-                                    textDecoration: 'none',
-                                    fontWeight: 500,
-                                    fontSize: '0.95rem',
-                                    cursor: 'pointer',
-                                    transition: 'color 0.2s ease'
-                                }}
-                                onMouseEnter={(e) => e.target.style.color = 'var(--primary)'}
-                                onMouseLeave={(e) => e.target.style.color = 'var(--text-main)'}
-                            >
-                                {link.name}
-                            </Link>
+                            {location.pathname === '/' ? (
+                                <ScrollLink
+                                    to={link.to}
+                                    smooth={true}
+                                    duration={500}
+                                    offset={-80}
+                                    style={{
+                                        color: 'var(--text-main)',
+                                        textDecoration: 'none',
+                                        fontWeight: 500,
+                                        fontSize: '0.95rem',
+                                        cursor: 'pointer',
+                                        transition: 'color 0.2s ease'
+                                    }}
+                                    onMouseEnter={(e) => e.target.style.color = 'var(--primary)'}
+                                    onMouseLeave={(e) => e.target.style.color = 'var(--text-main)'}
+                                >
+                                    {link.name}
+                                </ScrollLink>
+                            ) : (
+                                <span
+                                    onClick={() => handleNavClick(link.to)}
+                                    style={{
+                                        color: 'var(--text-main)',
+                                        textDecoration: 'none',
+                                        fontWeight: 500,
+                                        fontSize: '0.95rem',
+                                        cursor: 'pointer',
+                                        transition: 'color 0.2s ease'
+                                    }}
+                                    onMouseEnter={(e) => e.target.style.color = 'var(--primary)'}
+                                    onMouseLeave={(e) => e.target.style.color = 'var(--text-main)'}
+                                >
+                                    {link.name}
+                                </span>
+                            )}
                         </li>
                     ))}
                 </ul>
@@ -114,16 +157,25 @@ const Header = () => {
                             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                 {navLinks.map((link) => (
                                     <li key={link.to}>
-                                        <Link
-                                            to={link.to}
-                                            smooth={true}
-                                            duration={500}
-                                            offset={-80}
-                                            onClick={() => setIsOpen(false)}
-                                            style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 500, display: 'block' }}
-                                        >
-                                            {link.name}
-                                        </Link>
+                                        {location.pathname === '/' ? (
+                                            <ScrollLink
+                                                to={link.to}
+                                                smooth={true}
+                                                duration={500}
+                                                offset={-80}
+                                                onClick={() => setIsOpen(false)}
+                                                style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 500, display: 'block', cursor: 'pointer' }}
+                                            >
+                                                {link.name}
+                                            </ScrollLink>
+                                        ) : (
+                                            <span
+                                                onClick={() => handleNavClick(link.to)}
+                                                style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 500, display: 'block', cursor: 'pointer' }}
+                                            >
+                                                {link.name}
+                                            </span>
+                                        )}
                                     </li>
                                 ))}
                             </ul>
